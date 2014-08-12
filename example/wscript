@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+def options(opt):
+    opt.load('compiler_c')
+
+def configure(conf):
+    conf.load('compiler_c')
+
+def build(bld):
+    bld.program(source='test_minimal_traceback.c',
+                target='test_minimal_traceback',
+                lib='minimal_traceback')

@@ -1,0 +1,9 @@
+.lock-waf*
+build/
+
+*~
+.*.swp
+
+# local dev
+src/configure.sh
+install/
