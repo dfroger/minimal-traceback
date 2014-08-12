@@ -1,10 +1,27 @@
 #!/usr/bin/env python
+from os.path import expanduser
 
 def options(opt):
     opt.load('compiler_c')
 
+    opt.add_option('--mtb-inc-dir', action='store', default='',
+        help='minimal-traceback include directory.')
+
+    opt.add_option('--mtb-lib-dir', action='store', default='',
+        help='minimal-traceback library directory.')
+
 def configure(conf):
     conf.load('compiler_c')
+
+    mtb_inc_dir = expanduser(conf.options.mtb_inc_dir)
+    mtb_lib_dir = expanduser(conf.options.mtb_lib_dir)
+
+    conf.env.prepend_value('INCLUDES', [mtb_inc_dir,])
+    conf.env.prepend_value('LIBPATH', [mtb_lib_dir,])
+    conf.env.prepend_value('RPATH', [mtb_lib_dir,])
+
+    conf.check(header_name='minimal_traceback.h', features='c cprogram')
+    conf.check_cc(lib='minimal_traceback')
 
 def build(bld):
     bld.program(source='test_minimal_traceback.c',
