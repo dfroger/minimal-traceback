@@ -1,5 +1,5 @@
 cd src
 ../waf configure \
-    --prefix=$PREFIX \
+    --prefix=$PREFIX
 ../waf build
 ../waf install

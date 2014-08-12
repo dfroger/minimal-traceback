@@ -14,6 +14,6 @@ requirements:
   run:
 
 about:
-    home: https://github.com/dfroger/minimal-traceback
+  home: https://github.com/dfroger/minimal-traceback
   license: GPL
 
